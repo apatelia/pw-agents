@@ -14,8 +14,8 @@ export class CheckoutPage {
     this.firstName = page.locator('#first-name');
     this.lastName = page.locator('#last-name');
     this.postalCode = page.locator('#postal-code');
-    this.continueButton = page.locator('[data-test="continue"]');
-    this.finishButton = page.locator('[data-test="finish"]');
+    this.continueButton = page.getByTestId('continue');
+    this.finishButton = page.getByTestId('finish');
     this.summaryInfo = page.locator('.summary_info');
   }
 

@@ -14,13 +14,15 @@ export class InventoryPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.sortSelectLocator = page.locator('.product_sort_container');
-    this.addToCartButtons = page.locator('button:has-text("Add to cart")');
-    this.removeButtons = page.locator('button:has-text("Remove")');
+    this.sortSelectLocator = page.getByRole('combobox');
+    this.addToCartButtons = page.getByRole('button', { name: 'Add to cart' });
+    this.removeButtons = page.getByRole('button', { name: 'Remove' });
+    // product name and price elements don't expose stable accessible names,
+    // use the product-specific CSS classes which are stable on the page.
     this.productNames = page.locator('.inventory_item_name');
     this.productPrices = page.locator('.inventory_item_price');
-    this.images = page.locator('.inventory_item_img img');
-    this.inventoryList = page.locator('.inventory_list');
+    this.images = page.getByRole('img');
+    this.inventoryList = page.getByRole('list');
     this.cartLink = page.locator('a.shopping_cart_link');
     this.badgeLocator = page.locator('.shopping_cart_badge');
   }

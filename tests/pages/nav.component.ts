@@ -15,7 +15,7 @@ export class NavComponent {
     if (await this.menuButton.count()) {
       await this.menuButton.click();
     } else {
-      await this.page.locator('button:has-text("Open Menu")').click();
+      await this.page.getByRole('button', { name: /open menu/i }).click();
     }
   }
 
@@ -23,7 +23,7 @@ export class NavComponent {
     if (await this.logoutLink.count()) {
       await this.logoutLink.click();
     } else {
-      await this.page.locator('a:has-text("Logout")').click();
+      await this.page.getByRole('link', { name: /logout/i }).click();
     }
   }
 }
